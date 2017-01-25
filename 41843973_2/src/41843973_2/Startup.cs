@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace _41843973
+namespace _41843973_2
 {
     public class Startup
     {
@@ -36,8 +36,6 @@ namespace _41843973
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-			services.AddCors();
-
             services.AddMvc();
         }
 
@@ -59,9 +57,7 @@ namespace _41843973
                 app.UseExceptionHandler("/Home/Error");
             }
 
-			app.UseCors(builder => builder.WithOrigins("https://localhost:44304").AllowAnyMethod());
-
-			app.UseApplicationInsightsExceptionTelemetry();
+            app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
 
