@@ -36,6 +36,8 @@ namespace _41843973
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+			services.AddCors();
+
             services.AddMvc();
         }
 
@@ -57,7 +59,9 @@ namespace _41843973
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseApplicationInsightsExceptionTelemetry();
+			app.UseCors(builder => builder.WithOrigins("https://localhost:44306").AllowAnyMethod());
+
+			app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
 

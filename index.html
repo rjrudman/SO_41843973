@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var xmlhttp = new XMLHttpRequest();
+
+		xmlhttp.onreadystatechange = () => {
+			if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
+				resultsCallback(JSON.parse(xmlhttp.response));
+			}
+		}
+
+		xmlhttp.open("GET", "http://localhost:44357/api/User/ContactsPreview", true);
+		xmlhttp.send();
+	</script>
+</body>
+</html>
